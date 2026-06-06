@@ -1,0 +1,55 @@
+<!-- ═══════════════════════════════════════════
+     MODALS
+     ═══════════════════════════════════════════ -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+<!-- Modal tambah pembelian barang -->
+ <form action="/pembelian" method="post">
+<div class="modal-overlay" id="modalTambahBeli">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="modal-title">🛒 Tambah Data Pembelian</span>
+            <button class="modal-close" onclick="closeModal('modalTambahBeli')">✕</button>
+        </div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Nama Barang</label>
+                <input class="form-control" 
+                type="text"
+                name="nama_barang"
+                required
+                id="bInpNama" placeholder="Nama barang..." />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Jumlah</label>
+                <input class="form-control"
+                type="number"
+                name="kuantitas"
+                required
+                id="bInpQty" placeholder="Jumlahnya berapa..." />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Harga Satuan (Rp)</label>
+                <input class="form-control" 
+                type="number"
+                name="harga_satuan"
+                required
+                id="bInpHarga" placeholder="Rp..." />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Supplier</label>
+                <input class="form-control" 
+                type="text"
+                name="supplier"
+                required
+                id="bInpSupplier" placeholder="Nama supplier..." />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeModal('modalTambahBeli')">Batal</button>
+            <button class="btn btn-primary" onclick="submitBeli()">💾 Simpan</button>
+        </div>
+    </div>
+</div>
+</form>
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
