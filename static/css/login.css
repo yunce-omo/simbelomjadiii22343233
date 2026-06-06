@@ -1,0 +1,327 @@
+/* =============================================
+   login.css — Minerbaone Login Page
+   ============================================= */
+
+/* =============================================
+   CSS VARIABLES — Warna & Tipografi
+   ============================================= */
+:root {
+  /* Warna utama — sesuaikan dengan brand Anda */
+  --color-teal:       #1a5c6b;   /* tombol Masuk & aksen */
+  --color-teal-hover: #154e5b;   /* hover tombol */
+  --color-gold:       #f5c200;   /* aksen huruf "1" pada logo */
+  --color-navy:       #1a2b3c;   /* teks gelap */
+
+  /* Warna kartu */
+  --card-bg:          rgba(255, 255, 255, 0.96);
+  --card-shadow:      0 24px 64px rgba(0, 0, 0, 0.30);
+  --card-radius:      18px;
+
+  /* Input */
+  --input-bg:         #eef2f5;
+  --input-focus-bg:   #e2eaf0;
+  --input-border:     transparent;
+  --input-radius:     10px;
+
+  /* Tipografi */
+  --font-main:  'Barlow', sans-serif;
+  --font-brand: 'Barlow Condensed', sans-serif;
+
+  /* Lebar kartu */
+  --card-width: 460px;
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-navy);
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+
+  /* =============================================
+     BACKGROUND IMAGE — Ganti URL di bawah ini
+     dengan path gambar latar Anda, contoh:
+     background-image: url('bg-tambang.jpg');
+     ============================================= */
+  background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =============================================
+   OVERLAY GELAP di atas background
+   Ubah opacity (0.0 – 1.0) untuk terang/gelap
+   ============================================= */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 30, 45, 0.72) 0%,
+    rgba(26, 92, 107, 0.45) 100%
+  );
+  z-index: 0;
+}
+
+/* =============================================
+   PAGE WRAPPER
+   ============================================= */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+/* =============================================
+   CARD
+   ============================================= */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  max-width: var(--card-width);
+  padding: 48px 44px 44px;
+  animation: fadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Shake on wrong credentials */
+.card.shake {
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-4px); }
+  20%, 80% { transform: translateX(6px);  }
+  30%, 50%, 70% { transform: translateX(-6px); }
+  40%, 60% { transform: translateX(6px);  }
+}
+
+/* =============================================
+   BRAND / LOGO
+   Bagian ini bisa Anda ubah atau ganti dengan
+   tag <img> di dalam login.html
+   ============================================= */
+.brand {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 32px;
+  font-family: var(--font-brand);
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+/* Angka "1" — berwarna kuning/gold sebagai aksen */
+.brand-zest {
+  color: var(--color-gold);
+}
+
+
+/* Sisa tulisan "nerbaone" */
+.brand-dashboard {
+  color: var(--color-navy);
+}
+
+/* Jika pakai gambar logo:
+.brand-logo {
+  height: 48px;
+  width: auto;
+} */
+/* =============================================
+   AKHIR BRAND / LOGO
+   ============================================= */
+
+/* =============================================
+   JUDUL KARTU
+   ============================================= */
+.card-title {
+  font-size: 1.45rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-navy);
+  margin-bottom: 28px;
+  letter-spacing: -0.2px;
+}
+
+/* =============================================
+   PESAN ERROR
+   ============================================= */
+.error-msg {
+  background: #fdecea;
+  border-left: 4px solid #e53935;
+  color: #c62828;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* =============================================
+   FIELD GROUP (label + input)
+   ============================================= */
+.field-group {
+  margin-bottom: 20px;
+}
+
+.field-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.field-group input {
+  width: 100%;
+  background: var(--input-bg);
+  border: 2px solid var(--input-border);
+  border-radius: var(--input-radius);
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: var(--font-main);
+  color: var(--color-navy);
+  outline: none;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.field-group input:focus {
+  background: var(--input-focus-bg);
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(26, 92, 107, 0.15);
+}
+
+/* =============================================
+   PASSWORD WRAPPER (input + toggle button)
+   ============================================= */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 48px; /* ruang untuk ikon mata */
+}
+
+.toggle-pass {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8a9bb0;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.toggle-pass:hover {
+  color: var(--color-teal);
+}
+
+.toggle-pass svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* =============================================
+   TOMBOL MASUK
+   ============================================= */
+.btn-masuk {
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px;
+  background: var(--color-teal);
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  border: none;
+  border-radius: var(--input-radius);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(26, 92, 107, 0.30);
+}
+
+.btn-masuk:hover {
+  background: var(--color-teal-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(26, 92, 107, 0.38);
+}
+
+.btn-masuk:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(26, 92, 107, 0.25);
+}
+
+.btn-masuk:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =============================================
+   RESPONSIF — Layar kecil / mobile
+   ============================================= */
+@media (max-width: 500px) {
+  .card {
+    padding: 36px 24px 32px;
+  }
+
+  .brand {
+    font-size: 2.1rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+}
+
+.error-message{
+    color:#e53935;
+    font-size:13px;
+    margin:8px 0 12px;
+    text-align:center;
+}
+
+                            /* BATAS UNTUK LOGIN-WEBSITE */
+                            /* BATAS UNTUK LOGIN-WEBSITE */
+                            /* BATAS UNTUK LOGIN-WEBSITE */
+
