@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+</script>
+
+<body>
+    <!-- Background overlay -->
+    <div class="bg-overlay"></div>
+    <!-- Main container -->
+    <div class="page-wrapper">
+
+        <!-- Card -->
+        <div class="card">
+
+            <!-- =============================================
+           LOGO / BRAND — Ubah sesuai kebutuhan Anda
+           ============================================= -->
+            <div class="brand">
+                <!-- Jika ingin menggunakan gambar logo, ganti dengan:
+             <img src="logo.png" alt="Minerbaone" class="brand-logo" />
+        -->
+                <span class="brand-zest">Wasser&nbsp;</span><span class="brand-dashboard">Dashboard</span>
+            </div>
+            <!-- =============================================
+           AKHIR LOGO / BRAND
+           ============================================= -->
+
+            <h2 class="card-title">Masuk ke Akun Anda</h2>
+
+            <div id="error-msg" class="error-msg" style="display:none;">
+                Username atau kata sandi salah.
+            </div>
+
+            <form action="/login" method="POST">
+                <!-- USERNAME -->
+                <div class="field-group">
+                    <label for="username">Username Anda</label>
+                    <input type="text" name="username" required placeholder="" />
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="field-group">
+                    <label for="password">Kata Sandi</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" required placeholder="" />
+                        <button type="button" class="toggle-pass" id="togglePass" aria-label="Tampilkan kata sandi">
+                            <!-- Eye icon -->
+                            <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <!-- Eye-off icon (hidden by default) -->
+                            <svg id="eye-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="display:none;">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                <line x1="1" y1="1" x2="23" y2="23" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for msg in messages %}
+                <div class="error-message">
+                    ⚠ {{ msg }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                <button class="btn-masuk" type="submit">Masuk</button>
+
+        </div>
+        <!-- /card -->
+
+        </form>
+    </div>
+
+    <!-- PINDAHIN SCRIPT KE SINI -->
+    <script>
+        const toggleBtn = document.getElementById("togglePass");
+        const passwordInput = document.getElementById("password");
+        const eyeIcon = document.getElementById("eye-icon");
+        const eyeOffIcon = document.getElementById("eye-off-icon");
+
+        toggleBtn.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.style.display = "none";
+                eyeOffIcon.style.display = "block";
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.style.display = "block";
+                eyeOffIcon.style.display = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>
