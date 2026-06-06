@@ -1,0 +1,118 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}" />
+<!-- ─── PAGE: JADWAL LAUNDRY ─── -->
+<div class="page" id="pg-jadwal-laundry">
+  <div class="page-header">
+    <h2>Jadwal Laundry</h2>
+    <p>Daftar semua pesanan yang dijadwalkan</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="jadwal-toolbar">
+        <div class="filter-tabs" id="filterJadwal">
+          <button class="filter-tab active" onclick="filterJadwalFn('semua',this)">
+            Semua
+          </button>
+          <button class="filter-tab" onclick="filterJadwalFn('hariini',this)">
+            Hari Ini
+          </button>
+          <button class="filter-tab" onclick="filterJadwalFn('besok',this)">
+            Besok
+          </button>
+          <button class="filter-tab" onclick="filterJadwalFn('2hari',this)">
+            2 Hari Lagi
+          </button>
+          <button class="filter-tab" onclick="filterJadwalFn('3hari',this)">
+            3 Hari Lagi
+          </button>
+        </div>
+        </div>
+        <input type="text" id="searchJadwal" class="search-input" placeholder="Cari nama, nomor WA, atau ID..."
+          onkeyup="searchJadwal()">
+    </div>
+  <div class="card-body" style="padding: 0">
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#ID</th>
+            <th>Nama</th>
+            <th>Gender</th>
+            <th>Paket</th>
+            <th>No WA</th>
+            <th>Estimasi Selesai</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="tbljadwal">
+          {% for row in data_laundry %}
+          <tr data-hari="{{ row.sisa_hari }}">
+            <td>{{ row.id }}</td>
+            <td>{{ row.nama }}</td>
+            <td>{{ row.gender }}</td>
+            <td>
+              {% if row.paket == 1 %}
+                Kilat
+              {% elif row.paket == 3 %}
+                Santuy
+              {% else %}
+                Tidak Diketahui
+              {% endif %}
+            </td>
+            <td>{{ row.wa }}</td>
+            <td>{{ row.tanggal_selesai }}</td>
+
+            <td>
+              {% if row.status_tenggat == "Hari Ini" %}
+              <span class="badge badge-baru"> Hari Ini </span>
+
+              {% elif row.status_tenggat == "Besok" %}
+              <span class="badge badge-proses"> Besok </span>
+
+              {% elif row.status_tenggat == "2 Hari Lagi" %}
+              <span class="badge badge-dijemput"> 2 Hari Lagi </span>
+
+              {% elif row.status_tenggat == "3 Hari Lagi" %}
+              <span class="badge badge-selesai"> 3 Hari Lagi </span>
+
+              {% elif row.status_tenggat == "Terlambat" %}
+              <span class="badge badge-lewat"> Terlambat </span>
+
+              {% else %}
+              <span class="badge"> {{ row.status_tenggat }} </span>
+              {% endif %}
+            </td>
+
+            <td>
+              <button class="btn btn-nahedo" onclick="showDetailJadwal(
+                '{{ row.id }}',
+                '{{ row.nama }}',
+                '{{ row.gender }}',
+                '{{ row.wa }}',
+                '{{ row.paket }}',
+                '{{ row.tanggal_selesai }}',
+                '{{ row.status_tenggat }}'
+            )">
+                SelesaI?
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        </div>
+      </table>
+      <div id="detailModalJadwal" class="modal-detail">
+        <div class="modal-content-detail">
+          <span class="close-detail" onclick="closeDetailJadwal()">&times;</span>
+
+          <h3>Detail Pesanan</h3>
+
+          <div id="detailBodyJadwal"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- /pg-jadwal-laundry -->

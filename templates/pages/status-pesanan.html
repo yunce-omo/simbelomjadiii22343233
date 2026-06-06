@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+
+<div class="page" id="pg-status-pesanan">
+
+    <div class="page-header">
+        <h2>Status Pesanan</h2>
+        <p>Urutan dan kelola status setiap pesanan</p>
+    </div>
+
+    <div class="card">
+
+        <!-- FILTER + SEARCH -->
+        <div class="card-header">
+
+            <div class="jadwal-toolbar">
+
+                <div class="filter-tabs">
+                    <button class="filter-tab active"
+                        onclick="filterStatus('semua',this)">
+                        Semua
+                    </button>
+
+                    <button class="filter-tab"
+                        onclick="filterStatus('selesai',this)">
+                        Selesai
+                    </button>
+
+                    <button class="filter-tab"
+                        onclick="filterStatus('terlambat',this)">
+                        Belum Diambil
+                    </button>
+
+                </div>
+
+            </div>
+
+            <input
+                type="text"
+                id="searchStatus"
+                class="search-input"
+                placeholder="Cari nama, nomor WA, atau ID..."
+                onkeyup="searchStatus()">
+
+        </div>
+        <div class="card-body" style="padding:0">
+
+            <div class="tbl-wrap">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Nomor WA</th>
+                            <th>Paket</th>
+                            <th>Status</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tblStatus">
+                        {% for row in data_selesai %}
+                        <tr data-status="{{ row.status_tenggat }}">
+                            <td>{{ row.id }}</td>
+                            <td>{{ row.nama }}</td>
+                            <td>{{ row.wa }}</td>
+                            <td>
+                            {% if row.paket == 1 %}
+                                Kilat
+                            {% elif row.paket == 3 %}
+                                Santuy
+                            {% else %}
+                                Tidak Diketahui
+                            {% endif %}
+                            </td>
+                            <td>
+                            {% if row.status_tenggat == "Selesai" %}
+                                <span class="badge badge-selesai">
+                                    Selesai
+                                </span>
+                            {% else %}
+                                <span class="badge badge-lewat">
+                                    Belum Diambil
+                                </span>
+                            {% endif %}
+                            </td>
+                            <td>
+                            <button class="btn btn-primary" onclick="showDetailStatus(
+                                '{{ row.id }}',
+                                '{{ row.nama }}',
+                                '{{ row.gender }}',
+                                '{{ row.wa }}',
+                                '{{ row.paket }}',
+                                '{{ row.tanggal_selesai }}',
+                                '{{ row.status_tenggat }}'
+                            )">
+                                Detail
+                            </button>
+                            </td>                         
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

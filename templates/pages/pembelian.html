@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+<!-- ─── PAGE: DATA PEMBELIAN BARANG ─── -->
+<div class="page" id="pg-pembelian">
+    <div class="page-header">
+        <h2>Data Pembelian Barang</h2>
+        <p>Stok dan riwayat pembelian perlengkapan laundry</p>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Riwayat Pembelian</div>
+            <button class="btn btn-primary btn-sm" onclick="openModal('modalTambahBeli')">➕ Tambah Pembelian</button>
+        </div>
+        <div class="card-body" style="padding:0">
+            <div class="tbl-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Nama Barang</th>
+                            <th>Qty</th>
+                            <th>Harga Satuan</th>
+                            <th>Total</th>
+                            <th>Supplier</th>
+                            <th>Dicatat oleh</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblPembelian">
+                        {% for row in data_pembelian %}
+                        <tr>
+                            <td>{{ row.tanggal }}</td>
+                            <td>{{ row.nama_barang }}</td>
+                            <td>{{ row.kuantitas }}</td>
+                            <td>{{ row.harga_satuan }}</td>
+                            <td>{{ row.total }}</td>
+                            <td>{{ row.supplier }}</td>
+                            <td>{{ row.pencatat }}</td>                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div><!-- /pg-pembelian -->

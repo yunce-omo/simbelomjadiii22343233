@@ -1,0 +1,84 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+<aside class="sidebar" id="sidebar">
+
+    <!-- Brand / Logo -->
+    <div class="sidebar-brand">
+      <div class="brand-icon">🧺</div>
+      <div>
+        <div class="brand-name">LaundryPro</div>
+        <div class="brand-sub">Management System</div>
+      </div>
+    </div>
+
+    <div class="spacing">a</div>
+    <!-- ── MENU KARYAWAN ── -->
+    <div id="menuKaryawan">
+      <div class="nav-section-label">Karyawan</div>
+
+      <!-- Setiap nav-item memanggil navigateTo('id-halaman') -->
+      <div class="nav-item active" onclick="navigateTo('pg-dashboard-k')">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Dashboard</span>
+      </div>
+      <div class="nav-item" onclick="navigateTo('pg-input-laundry')">
+        <span class="nav-icon">➕</span>
+        <span class="nav-label">Input Laundry</span>
+      </div>
+      <div class="nav-item" onclick="navigateTo('pg-jadwal-laundry')">
+        <span class="nav-icon">📋</span>
+        <span class="nav-label">Jadwal Laundry</span>
+        {% if jumlah_hari_ini > 0 %}
+        <span class="nav-badge" id="badgeJadwal">{{ jumlah_hari_ini }}</span>
+        {% endif %}
+      </div>
+      <div class="nav-item" onclick="navigateTo('pg-status-pesanan')">
+        <span class="nav-icon">🔄</span>
+        <span class="nav-label">Status Pesanan</span>
+      </div>
+      <div class="nav-item" onclick="navigateTo('pg-pembelian')">
+        <span class="nav-icon">🛒</span>
+        <span class="nav-label">Data Pembelian</span>
+      </div>
+    </div>
+
+    <!-- ── MENU ADMIN (tersembunyi secara default) ── -->
+    {% if role == 'Admin' %}
+    <div id="menuAdmin">
+        <div class="nav-section-label">
+            Admin
+        </div>
+        <div class="nav-item" onclick="navigateTo('pg-dashboard-a')">
+            <span class="nav-icon">📈</span>
+            <span class="nav-label">Dashboard Admin</span>
+        </div>
+
+        <div class="nav-item" onclick="navigateTo('pg-data-penjualan')">
+            <span class="nav-icon">💰</span>
+            <span class="nav-label">Data Penjualan</span>
+        </div>
+
+        <div class="nav-item" onclick="navigateTo('pg-pelanggan')">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Data Pelanggan</span>
+        </div>
+
+        <div class="nav-item" onclick="navigateTo('pg-laporan')">
+            <span class="nav-icon">📑</span>
+            <span class="nav-label">Laporan</span>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Info user di bawah sidebar -->
+    <div class="sidebar-user">
+      <div class="user-avatar">{{ username[0]|upper }}</div>
+      <div>
+        <div class="user-info-name">{{ username|title }}</div>
+        <div class="user-info-role">{{ role }}</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════
+       MAIN CONTENT AREA
+       ═══════════════════════════════════ -->

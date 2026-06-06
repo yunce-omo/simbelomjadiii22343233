@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+<div class="page active" id="pg-dashboard-k">
+        <div class="page-header">
+          <h2>Dashboard Karyawan</h2>
+          <p>Ringkasan hari ini — {{ tanggal }}</p>
+        </div>
+
+        <!-- Stat cards ringkasan -->
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-icon teal">🧺</div>
+            <div>
+              <div class="stat-label">Pesanan Hari Ini</div>
+              <div class="stat-value">18</div>
+              <div class="stat-change up">▲ 12% dari kemarin</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">✅</div>
+            <div>
+              <div class="stat-label">Selesai Hari Ini</div>
+              <div class="stat-value">11</div>
+              <div class="stat-change up">▲ 8% dari kemarin</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">⏳</div>
+            <div>
+              <div class="stat-label">Dalam Proses</div>
+              <div class="stat-value">5</div>
+              <div class="stat-change down">▼ 2 item</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red">⚠️</div>
+            <div>
+              <div class="stat-label">Lewat Jadwal</div>
+              <div class="stat-value">2</div>
+              <div class="stat-change down">Perlu perhatian</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Baris: chart pesanan harian + tabel pesanan terbaru -->
+        <div class="two-col">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Pesanan Minggu Ini</div>
+                <div class="card-subtitle">Jumlah pesanan masuk per hari</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart-wrap">
+                <!-- Canvas untuk Chart.js line chart -->
+                <canvas id="chartWeekK"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Pesanan Terbaru</div>
+              <button class="btn btn-outline btn-sm" onclick="navigateTo('pg-status-pesanan')">Lihat Semua</button>
+            </div>
+            <div class="card-body" style="padding:0">
+              <div class="tbl-wrap">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td><b>#L001</b><br><span style="font-size:11px;color:var(--text-muted)">Siti Rahayu</span></td>
+                      <td><span class="badge badge-proses">Proses</span></td>
+                    </tr>
+                    <tr>
+                      <td><b>#L002</b><br><span style="font-size:11px;color:var(--text-muted)">Budi Hartono</span></td>
+                      <td><span class="badge badge-selesai">Selesai</span></td>
+                    </tr>
+                    <tr>
+                      <td><b>#L003</b><br><span style="font-size:11px;color:var(--text-muted)">Dewi Anggraini</span></td>
+                      <td><span class="badge badge-lewat">Terlambat</span></td>
+                    </tr>
+                    <tr>
+                      <td><b>#L004</b><br><span style="font-size:11px;color:var(--text-muted)">Reza Firmansyah</span></td>
+                      <td><span class="badge badge-baru">Baru</span></td>
+                    </tr>
+                    <tr>
+                      <td><b>#L005</b><br><span style="font-size:11px;color:var(--text-muted)">Yuni Kartika</span></td>
+                      <td><span class="badge badge-dijemput">Dijemput</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /pg-dashboard-k -->
