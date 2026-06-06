@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+<!-- ─── DASHBOARD ADMIN ─── -->
+<div class="page" id="pg-dashboard-a">
+    <div class="page-header">
+        <h2>Dashboard Admin / Owner</h2>
+        <p>Ringkasan bisnis laundry secara keseluruhan</p>
+    </div>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-icon blue">💰</div>
+            <div>
+                <div class="stat-label">Pendapatan Bulan Ini</div>
+                <div class="stat-value">Rp 4,2jt</div>
+                <div class="stat-change up">▲ 18% vs bulan lalu</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon green">👥</div>
+            <div>
+                <div class="stat-label">Total Pelanggan</div>
+                <div class="stat-value">248</div>
+                <div class="stat-change up">▲ 12 pelanggan baru</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon teal">🧺</div>
+            <div>
+                <div class="stat-label">Pesanan Bulan Ini</div>
+                <div class="stat-value">186</div>
+                <div class="stat-change up">▲ 8% vs bulan lalu</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon orange">📦</div>
+            <div>
+                <div class="stat-label">Rata-rata / Pesanan</div>
+                <div class="stat-value">Rp 22.580</div>
+                <div class="stat-change up">▲ 3% dari rata-rata</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart penjualan + donut pelanggan -->
+    <div class="two-col">
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">Pendapatan Overview</div>
+                    <div class="card-subtitle">Grafik pendapatan bulanan</div>
+                </div>
+                <!-- Toggle Minggu / Bulan -->
+                <div class="period-toggle">
+                    <button class="period-btn active" id="btnMinggu" onclick="switchPeriod('minggu')">Minggu</button>
+                    <button class="period-btn" id="btnBulan" onclick="switchPeriod('bulan')">Bulan</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart-wrap-tall">
+                    <canvas id="chartPenjualan"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donut chart pelanggan -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Distribusi Pelanggan</div>
+            </div>
+            <div class="card-body">
+                <div style="height:160px;position:relative;margin-bottom:16px">
+                    <canvas id="chartPelanggan"></canvas>
+                </div>
+                <div>
+                    <div class="customer-stat">
+                        <div class="cst-dot" style="background:#5e72e4"></div>
+                        <span class="cst-label">Total Pelanggan</span>
+                        <span class="cst-val">248</span>
+                        <span class="cst-pct">100%</span>
+                    </div>
+                    <div class="customer-stat">
+                        <div class="cst-dot" style="background:#fb6340"></div>
+                        <span class="cst-label">Perempuan</span>
+                        <span class="cst-val" id="statPerempuan">148</span>
+                        <span class="cst-pct">60%</span>
+                    </div>
+                    <div class="customer-stat">
+                        <div class="cst-dot" style="background:#11cdef"></div>
+                        <span class="cst-label">Laki-laki</span>
+                        <span class="cst-val" id="statPria">100</span>
+                        <span class="cst-pct">40%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart total pesanan per hari -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Total Pesanan per Hari (Bulan Ini)</div>
+        </div>
+        <div class="card-body">
+            <div class="chart-wrap">
+                <canvas id="chartTotalOrders"></canvas>
+            </div>
+        </div>
+    </div>
+</div><!-- /pg-dashboard-a -->
