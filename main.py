@@ -31,8 +31,8 @@ def login():
 
     if user:
 
-        session['username'] = user[1]
-        session['role'] = user[3]
+        session['username'] = admin
+        session['role'] = admin123
 
         return redirect(url_for('dashboard'))
     else:
