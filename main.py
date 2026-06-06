@@ -7,7 +7,7 @@ app.secret_key = "rahasia123"
 
 @app.route('/')
 def home():
-    return render_template('pages/login.html')
+    return render_template('dashboard')
 
 @app.route('/login', methods=['POST'])
 def login():
