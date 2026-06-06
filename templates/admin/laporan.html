@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+<!-- ─── LAPORAN (ADMIN) ─── -->
+<div class="page" id="pg-laporan">
+    <div class="page-header">
+        <h2>Laporan</h2>
+        <p>Cetak dan ekspor laporan bisnis</p>
+    </div>
+    <div class="three-col">
+        <div class="card">
+            <div class="card-body" style="text-align:center;padding:28px">
+                <div style="font-size:36px;margin-bottom:12px">📊</div>
+                <div style="font-size:15px;font-weight:700;margin-bottom:6px">Laporan Penjualan</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px">Ringkasan pendapatan per periode
+                </div>
+                <button class="btn btn-primary">Download PDF</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body" style="text-align:center;padding:28px">
+                <div style="font-size:36px;margin-bottom:12px">👥</div>
+                <div style="font-size:15px;font-weight:700;margin-bottom:6px">Laporan Pelanggan</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px">Data dan analitik pelanggan</div>
+                <button class="btn btn-success">Download PDF</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body" style="text-align:center;padding:28px">
+                <div style="font-size:36px;margin-bottom:12px">🛒</div>
+                <div style="font-size:15px;font-weight:700;margin-bottom:6px">Laporan Pembelian</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px">Riwayat stok dan pengeluaran
+                </div>
+                <button class="btn btn-warning">Download PDF</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /pg-laporan -->

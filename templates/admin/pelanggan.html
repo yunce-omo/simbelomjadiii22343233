@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+<div class="page" id="pg-pelanggan">
+    <div class="page-header">
+        <h2>Data Pelanggan</h2>
+        <p>Database pelanggan tetap dan baru</p>
+    </div>
+
+    <div class="three-col">
+        <div class="stat-card">
+            <div class="stat-icon blue">👥</div>
+            <div>
+                <div class="stat-label">Total Pelanggan</div>
+                <div class="stat-value">248</div>
+                <div class="stat-change up">▲ 12 baru bulan ini</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon red">👩</div>
+            <div>
+                <div class="stat-label">Pelanggan Perempuan</div>
+                <div class="stat-value">148</div>
+                <div class="stat-change up">60% dari total</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon teal">👨</div>
+            <div>
+                <div class="stat-label">Pelanggan Pria</div>
+                <div class="stat-value">100</div>
+                <div class="stat-change up">40% dari total</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Pertumbuhan Pelanggan</div>
+            </div>
+            <div class="card-body">
+                <div class="chart-wrap"><canvas id="chartGrowth"></canvas></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Segmentasi Gender</div>
+            </div>
+            <div class="card-body">
+                <div style="height:200px;position:relative"><canvas id="chartGender"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Daftar Pelanggan</div>
+            <input class="form-control" style="width:200px;padding:6px 12px;font-size:12px"
+                placeholder="Cari nama / WA..." />
+        </div>
+        <div class="card-body" style="padding:0">
+            <div class="tbl-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Gender</th>
+                            <th>No WA</th>
+                            <th>Total Order</th>
+                            <th>Total Bayar</th>
+                            <th>Terakhir Order</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Siti Rahayu</td>
+                            <td><span class="gender-badge gender-p">Perempuan</span></td>
+                            <td>081234567890</td>
+                            <td>12</td>
+                            <td>Rp 320.000</td>
+                            <td>02 Jun 2025</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Budi Hartono</td>
+                            <td><span class="gender-badge gender-l">Laki-laki</span></td>
+                            <td>082345678901</td>
+                            <td>8</td>
+                            <td>Rp 240.000</td>
+                            <td>02 Jun 2025</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Dewi Anggraini</td>
+                            <td><span class="gender-badge gender-p">Perempuan</span></td>
+                            <td>083456789012</td>
+                            <td>15</td>
+                            <td>Rp 450.000</td>
+                            <td>01 Jun 2025</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Reza Firmansyah</td>
+                            <td><span class="gender-badge gender-l">Laki-laki</span></td>
+                            <td>084567890123</td>
+                            <td>6</td>
+                            <td>Rp 180.000</td>
+                            <td>01 Jun 2025</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Yuni Kartika</td>
+                            <td><span class="gender-badge gender-p">Perempuan</span></td>
+                            <td>085678901234</td>
+                            <td>20</td>
+                            <td>Rp 560.000</td>
+                            <td>31 Mei 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div><!-- /pg-pelanggan -->

@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+<!-- ─── DATA PENJUALAN (ADMIN) ─── -->
+<div class="page" id="pg-data-penjualan">
+    <div class="page-header">
+        <h2>Data Penjualan</h2>
+        <p>Riwayat pendapatan dan penjualan paket laundry</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+        <div class="card-header">
+            <div class="card-title">Grafik Pendapatan</div>
+            <div class="period-toggle">
+                <button class="period-btn active" id="btnMinggu2" onclick="switchPeriod2('minggu')">Minggu</button>
+                <button class="period-btn" id="btnBulan2" onclick="switchPeriod2('bulan')">Bulan</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chart-wrap-tall"><canvas id="chartPenjualan2"></canvas></div>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Paket Terlaris</div>
+            </div>
+            <div class="card-body">
+                <div class="chart-wrap"><canvas id="chartPaket"></canvas></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Ringkasan Keuangan</div>
+            </div>
+            <div class="card-body">
+                <div style="display:flex;flex-direction:column;gap:14px">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <span style="font-size:13px;color:var(--text-muted)">Pendapatan Minggu Ini</span>
+                        <span style="font-size:15px;font-weight:700;color:var(--green)">Rp 1.240.000</span>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-bar" style="width:62%"></div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <span style="font-size:13px;color:var(--text-muted)">Pendapatan Bulan Ini</span>
+                        <span style="font-size:15px;font-weight:700;color:var(--blue)">Rp 4.200.000</span>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-bar" style="width:84%"></div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <span style="font-size:13px;color:var(--text-muted)">Pengeluaran Bulan Ini</span>
+                        <span style="font-size:15px;font-weight:700;color:var(--orange)">Rp 890.000</span>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-bar"
+                            style="width:21%;background:linear-gradient(90deg,var(--orange),#fc9231)"></div>
+                    </div>
+                    <div
+                        style="padding-top:8px;border-top:1px solid var(--border);display:flex;justify-content:space-between">
+                        <span style="font-size:13px;font-weight:700">Laba Bersih</span>
+                        <span style="font-size:15px;font-weight:800;color:var(--green)">Rp 3.310.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Riwayat Transaksi Lengkap</div>
+            <button class="btn btn-outline btn-sm">📥 Export Excel</button>
+        </div>
+        <div class="card-body" style="padding:0">
+            <div class="tbl-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Pelanggan</th>
+                            <th>Paket</th>
+                            <th>Berat</th>
+                            <th>Total</th>
+                            <th>Bayar via</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>02 Jun</td>
+                            <td>Siti R.</td>
+                            <td>Reguler</td>
+                            <td>3 kg</td>
+                            <td>Rp 25.000</td>
+                            <td>Transfer</td>
+                            <td><span class="badge badge-selesai">Lunas</span></td>
+                        </tr>
+                        <tr>
+                            <td>02 Jun</td>
+                            <td>Budi H.</td>
+                            <td>Express</td>
+                            <td>4 kg</td>
+                            <td>Rp 40.000</td>
+                            <td>Cash</td>
+                            <td><span class="badge badge-proses">Sebagian</span></td>
+                        </tr>
+                        <tr>
+                            <td>01 Jun</td>
+                            <td>Dewi A.</td>
+                            <td>Kilat</td>
+                            <td>2 kg</td>
+                            <td>Rp 55.000</td>
+                            <td>QRIS</td>
+                            <td><span class="badge badge-selesai">Lunas</span></td>
+                        </tr>
+                        <tr>
+                            <td>01 Jun</td>
+                            <td>Reza F.</td>
+                            <td>Setrika</td>
+                            <td>5 kg</td>
+                            <td>Rp 35.000</td>
+                            <td>Transfer</td>
+                            <td><span class="badge badge-lewat">Belum</span></td>
+                        </tr>
+                        <tr>
+                            <td>31 Mei</td>
+                            <td>Maya K.</td>
+                            <td>Reguler</td>
+                            <td>6 kg</td>
+                            <td>Rp 30.000</td>
+                            <td>Cash</td>
+                            <td><span class="badge badge-selesai">Lunas</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div><!-- /pg-data-penjualan -->
